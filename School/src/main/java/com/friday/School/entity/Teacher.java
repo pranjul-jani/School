@@ -1,21 +1,15 @@
 package com.friday.School.entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;
 
-@JsonIdentityInfo
-        (
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id"
-        )
 @Entity
 public class Teacher {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
 
@@ -39,7 +33,7 @@ public class Teacher {
         this.name = name;
     }
 
-
+    @JsonIgnore
     public Set<Subject> getSubjectSet() {
         return SubjectSet;
     }

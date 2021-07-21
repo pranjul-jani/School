@@ -1,24 +1,28 @@
 package com.friday.School.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     private String name;
+
+    @ManyToMany(mappedBy = "enrolledStudents")
+    private Set<Subject> subjectSet;
 
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        id = id;
     }
 
     public String getName() {
@@ -28,4 +32,14 @@ public class Student {
     public void setName(String name) {
         this.name = name;
     }
+
+    @JsonIgnore
+    public Set<Subject> getSubjectSet() {
+        return subjectSet;
+    }
+
+    public void setSubjectSet(Set<Subject> subjectSet) {
+        this.subjectSet = subjectSet;
+    }
+
 }
