@@ -32,7 +32,7 @@ public class SubjectController {
         return new ResponseEntity<>(subjectService.createSubject(subject), HttpStatus.CREATED);
     }
 
-    @PutMapping("/{subjectId}/teacher/{teacherId}")
+    @PutMapping("/{subjectId}/teachers/{teacherId}")
     public ResponseEntity<Subject> assignTeacherToSubject(
             @PathVariable Long subjectId,
             @PathVariable Long teacherId) {
