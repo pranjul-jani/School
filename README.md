@@ -13,4 +13,4 @@ Part-Two branch:
 Creating ManyToOne relatioship between teacher and subject entities and adding new endpoints for this relationship.
 
 Mater branch:
-Xreating ManyToMany relationship between student and Teacher entities and adding new endpoints for this relationship.
+Creating ManyToMany relationship between student and Teacher entities and adding new endpoints for this relationship.
