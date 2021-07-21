@@ -1,25 +1,34 @@
 package com.friday.School.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import javax.persistence.*;
+import java.util.Set;
 
+@JsonIdentityInfo
+        (
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id"
+        )
 @Entity
 public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private Long Id;
+    private Long id;
     private String name;
 
+
+    @OneToMany(mappedBy = "teacher")
+    private Set<Subject> SubjectSet;
+
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        id = id;
     }
 
     public String getName() {
@@ -28,5 +37,14 @@ public class Teacher {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+
+    public Set<Subject> getSubjectSet() {
+        return SubjectSet;
+    }
+
+    public void setSubjectSet(Set<Subject> subjectSet) {
+        SubjectSet = subjectSet;
     }
 }
